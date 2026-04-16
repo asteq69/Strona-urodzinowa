@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urodzinowa Przygoda Papryczki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #064e3b;
+            --sky: #38bdf8;
+            --grass: #68d391;
+            --sunset: #f6ad55;
+            --purple: #805ad5;
+            --dark: #1a202c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        section {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            z-index: 0;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Section 1 */
+        #section1 { background-color: var(--teal); }
+        .living-room-art {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            opacity: 0.9;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        /* Section 2 */
+        #section2 { background: linear-gradient(to bottom, var(--teal), var(--sky)); }
+        .airplane {
+            position: absolute;
+            width: 300px;
+            z-index: 5;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+        }
+        .cloud {
+            position: absolute;
+            width: 200px;
+            opacity: 0.6;
+            animation: moveClouds 30s linear infinite;
+        }
+        @keyframes moveClouds {
+            from { transform: translateX(-250px); }
+            to { transform: translateX(calc(100vw + 250px)); }
+        }
+
+        /* Section 3 */
+        #section3 { background-color: #bae6fd; color: #1a365d; }
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60%;
+            display: flex;
+            align-items: flex-end;
+        }
+        .steppes {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 25%;
+            background-color: var(--grass);
+            z-index: 2;
+        }
+        .yurt-container {
+            position: absolute;
+            bottom: 10%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            z-index: 3;
+        }
+
+        /* Section 4 */
+        #section4 { background: linear-gradient(to bottom, var(--sunset), var(--purple), var(--dark)); }
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .countdown-value {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        .heart {
+            color: #ff4d4d;
+            font-size: 3rem;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Modern Living Room -->
+    <section id="section1">
+        <div class="parallax-bg" data-speed="0.2">
+            <div class="living-room-art">
+                <!-- Armchair & Cat -->
+                <div style="position: relative; width: 350px;">
+                    <svg viewBox="0 0 200 200" style="width: 100%;">
+                        <path d="M40 160 L160 160 L170 180 L30 180 Z" fill="#2D3748" />
+                        <path d="M50 100 Q50 60 100 60 Q150 60 150 100 L150 160 L50 160 Z" fill="#4A5568" />
+                        <path d="M40 110 L60 110 L60 160 L40 160 Z" fill="#2D3748" />
+                        <path d="M140 110 L160 110 L160 160 L140 160 Z" fill="#2D3748" />
+                        <rect x="60" y="140" width="80" height="20" fill="#718096" rx="5" />
+                        <!-- Cat -->
+                        <g transform="translate(100, 100) scale(0.6)">
+                            <ellipse cx="50" cy="70" rx="30" ry="20" fill="#ED8936" />
+                            <circle cx="70" cy="50" r="15" fill="#ED8936" />
+                            <path d="M60 40 L65 25 L75 38 Z" fill="#ED8936" />
+                            <path d="M75 40 L85 25 L80 38 Z" fill="#ED8936" />
+                            <path d="M25 75 Q10 75 15 60" fill="none" stroke="#ED8936" stroke-width="6" stroke-linecap="round" />
+                            <circle cx="65" cy="48" r="1.5" fill="#2D3748" />
+                            <circle cx="75" cy="48" r="1.5" fill="#2D3748" />
+                        </g>
+                    </svg>
+                </div>
+                <!-- Plant -->
+                <div style="position: relative; width: 250px;">
+                    <svg viewBox="0 0 200 200" style="width: 100%;">
+                        <path d="M80 160 L120 160 L130 190 L70 190 Z" fill="#A0AEC0" />
+                        <path d="M100 160 Q100 100 130 60" fill="none" stroke="#2F855A" stroke-width="4" />
+                        <path d="M130 60 Q160 40 150 80 Q140 100 130 60" fill="#38A169" />
+                        <path d="M100 160 Q90 120 60 90" fill="none" stroke="#2F855A" stroke-width="3" />
+                        <path d="M60 90 Q30 70 40 110 Q50 130 60 90" fill="#38A169" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="glass-card">
+                <h1>WSZYSTKIEGO NAJLEPSZEGO PAPRYCZKO, STO LAT!</h1>
+                <p>Zacznij scrollować, aby rozpocząć naszą urodzinową przygodę...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Sky Journey -->
+    <section id="section2">
+        <div class="parallax-bg" data-speed="0.5">
+            <div class="cloud" style="top: 10%; left: 10%; animation-delay: 0s;"><svg viewBox="0 0 100 60"><circle cx="30" cy="35" r="15" fill="white"/><circle cx="50" cy="30" r="20" fill="white"/><circle cx="70" cy="35" r="15" fill="white"/><rect x="30" y="35" width="40" height="15" fill="white"/></svg></div>
+            <div class="cloud" style="top: 30%; left: 60%; animation-delay: -5s;"><svg viewBox="0 0 100 60"><circle cx="30" cy="35" r="15" fill="white"/><circle cx="50" cy="30" r="20" fill="white"/><circle cx="70" cy="35" r="15" fill="white"/><rect x="30" y="35" width="40" height="15" fill="white"/></svg></div>
+            <div class="cloud" style="top: 60%; left: 20%; animation-delay: -10s;"><svg viewBox="0 0 100 60"><circle cx="30" cy="35" r="15" fill="white"/><circle cx="50" cy="30" r="20" fill="white"/><circle cx="70" cy="35" r="15" fill="white"/><rect x="30" y="35" width="40" height="15" fill="white"/></svg></div>
+        </div>
+        <div class="airplane" id="airplane">
+            <svg viewBox="0 0 200 100">
+                <path d="M20 50 Q20 40 100 40 L160 45 Q180 50 160 55 L100 60 Q20 60 20 50" fill="#FFFFFF" />
+                <path d="M80 40 L110 10 L130 40 Z" fill="#E2E8F0" />
+                <path d="M80 60 L110 90 L130 60 Z" fill="#CBD5E0" />
+                <path d="M160 45 L180 35 L180 65 L160 55 Z" fill="#E2E8F0" />
+                <rect x="40" y="45" width="10" height="5" fill="#3182CE" rx="2" />
+                <rect x="60" y="45" width="10" height="5" fill="#3182CE" rx="2" />
+                <rect x="80" y="45" width="10" height="5" fill="#3182CE" rx="2" />
+            </svg>
+        </div>
+        <div class="content">
+            <div style="background: rgba(0,0,0,0.4); padding: 1.5rem 3rem; border-radius: 5rem; display: inline-block;">
+                <p style="letter-spacing: 5px; text-transform: uppercase; font-weight: 900;">Wznosimy się ponad chmury...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Destination Kyrgyzstan -->
+    <section id="section3">
+        <div class="mountains" id="mountains">
+            <svg viewBox="0 0 200 100" preserveAspectRatio="none" style="width: 40%; height: 100%; margin-right: -10%; opacity: 0.8;">
+                <path d="M0 100 L100 0 L200 100 Z" fill="#718096" />
+                <path d="M100 0 L80 20 L90 25 L100 15 L110 25 L120 20 Z" fill="white" />
+            </svg>
+            <svg viewBox="0 0 200 100" preserveAspectRatio="none" style="width: 60%; height: 120%; z-index: 1;">
+                <path d="M0 100 L100 0 L200 100 Z" fill="#4A5568" />
+                <path d="M100 0 L80 20 L90 25 L100 15 L110 25 L120 20 Z" fill="white" />
+            </svg>
+            <svg viewBox="0 0 200 100" preserveAspectRatio="none" style="width: 40%; height: 100%; margin-left: -10%; opacity: 0.8;">
+                <path d="M0 100 L100 0 L200 100 Z" fill="#718096" />
+                <path d="M100 0 L80 20 L90 25 L100 15 L110 25 L120 20 Z" fill="white" />
+            </svg>
+        </div>
+        <div class="steppes"></div>
+        <div class="yurt-container">
+            <svg viewBox="0 0 100 80" style="width: 150px;">
+                <path d="M10 70 Q10 30 50 20 Q90 30 90 70 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+                <path d="M40 70 L40 50 Q50 45 60 50 L60 70 Z" fill="#744210" />
+                <circle cx="50" cy="20" r="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+            </svg>
+            <svg viewBox="0 0 100 80" style="width: 180px;">
+                <path d="M10 70 Q10 30 50 20 Q90 30 90 70 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+                <path d="M40 70 L40 50 Q50 45 60 50 L60 70 Z" fill="#744210" />
+                <circle cx="50" cy="20" r="8" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+            </svg>
+        </div>
+        <div class="content">
+            <h2 style="font-size: 4rem; font-weight: 900; margin-bottom: 1rem;">Czeka nas niesamowita przygoda...</h2>
+            <p style="letter-spacing: 3px; text-transform: uppercase; font-weight: 700;">Przez góry, stepy i jurty!</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Sunset Finale -->
+    <section id="section4">
+        <div class="parallax-bg" data-speed="0.1" style="display: flex; align-items: flex-end; opacity: 0.3;">
+            <svg viewBox="0 0 200 100" preserveAspectRatio="none" style="width: 50%; height: 40%;"><path d="M0 100 L100 0 L200 100 Z" fill="black"/></svg>
+            <svg viewBox="0 0 200 100" preserveAspectRatio="none" style="width: 50%; height: 30%;"><path d="M0 100 L100 0 L200 100 Z" fill="black"/></svg>
+        </div>
+        <div class="content">
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">
+                Kochanie, dziękuję Ci za każdą wspólną chwilę. <br>
+                Nie mogę się doczekać naszej wielkiej wyprawy. <br>
+                Jesteś dla mnie wszystkim!
+            </h2>
+
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Dni</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Godzin</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minut</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Sekund</span>
+                </div>
+            </div>
+
+            <div class="heart">❤</div>
+            <footer>Na zawsze Twój</footer>
+        </div>
+    </section>
+
+    <script>
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            
+            // Background parallax
+            document.querySelectorAll('.parallax-bg').forEach(bg => {
+                const speed = bg.getAttribute('data-speed');
+                bg.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+
+            // Airplane movement
+            const airplane = document.getElementById('airplane');
+            const sec2 = document.getElementById('section2');
+            const sec2Top = sec2.offsetTop;
+            const sec2Height = sec2.offsetHeight;
+            
+            if (scrolled > sec2Top - window.innerHeight && scrolled < sec2Top + sec2Height) {
+                const progress = (scrolled - (sec2Top - window.innerHeight)) / (sec2Height + window.innerHeight);
+                const xPos = (progress * 120) - 20; // -20% to 100%
+                airplane.style.left = xPos + '%';
+                airplane.style.top = (40 + Math.sin(progress * 10) * 5) + '%';
+            }
+
+            // Mountain scaling
+            const mountains = document.getElementById('mountains');
+            const sec3 = document.getElementById('section3');
+            const sec3Top = sec3.offsetTop;
+            if (scrolled > sec3Top - window.innerHeight) {
+                const progress = (scrolled - (sec3Top - window.innerHeight)) / window.innerHeight;
+                const scale = 0.8 + (progress * 0.4);
+                mountains.style.transform = `scale(${Math.min(scale, 1.2)})`;
+            }
+        });
+
+        // Countdown Timer
+        const targetDate = new Date("June 6, 2026 12:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) return;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

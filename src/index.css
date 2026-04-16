@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+    overflow-x: hidden;
+  }
+}
+
+.parallax-section {
+  @apply min-h-screen relative overflow-hidden flex items-center justify-center;
+}
+
+.glass-card {
+  @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes tailWag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes catBlink {
+  0%, 80%, 90%, 100% { transform: scaleY(1); }
+  85% { transform: scaleY(0.1); }
+}
+
+@keyframes camperBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+@keyframes wheelSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.camper-anim {
+  animation: camperBounce 1s ease-in-out infinite;
+}
+
+.wheel-anim {
+  animation: wheelSpin 1.5s linear infinite;
+  transform-origin: 0px 0px;
+}
